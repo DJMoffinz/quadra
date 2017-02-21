@@ -20,8 +20,8 @@
 
 #include "zone_text_clock.h"
 
-Zone_text_clock::Zone_text_clock(Inter* in, uint32_t *s, int px, int py, int pw, bool frame, Font *f2):
-	Zone_text_field(in, (int *)s, px, py, pw, f2) {
+Zone_text_clock::Zone_text_clock(Inter* in, uint32_t *s, int px, int py, int pw, bool frame, Font *f2) : //-roncli 5/7/01 Added centiseconds
+    Zone_text_field(in, (int *)s, px, py, pw, f2) {
 	draw_frame = frame;
 }
 
@@ -38,9 +38,12 @@ void Zone_text_clock::draw() {
 		video->vb->rect(x+1, y+1, w-2, h-2, 210);
 	}
 
-	int seconde = *var % 60;
-	int minute = (*var / 60) % 60;
-	int heure = *var / 60 / 60;
-	sprintf(timebuf, "%02i:%02i:%02i", heure, minute, seconde);
-	font->draw(timebuf, pan, w - font->width(timebuf) - 3, 0);  // alignement du texte a droite
+    //-roncli 5/7/01 Added centiseconds
+    int cs = *var % 100;
+    int seconde = (*var / 100) % 60;
+    int minute = (*var / 6000) % 60;
+    int heure = *var / 360000;
+    sprintf(timebuf, "%02i:%02i:%02i:%02i", heure, minute, seconde, cs);
+    //---------------------------------
+    font->draw(timebuf, pan, w - font->width(timebuf) - 3, 0);  // alignement du texte a droite
 }
