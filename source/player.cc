@@ -1550,10 +1550,28 @@ void Player_stamp::stamp_bloc() {
 
 	delete canvas->bloc;
 	canvas->bloc = NULL;
-	if(canvas->bloc_shadow) {
-		delete canvas->bloc_shadow;
-		canvas->bloc_shadow = NULL;
-	}
+    //-roncli 5/9/01 Added small next pieces above block shadow
+    if (canvas->bloc_shadow) {
+        for (j = canvas->bloc_shadow->by - 7; j < canvas->bloc_shadow->by; j++)
+            for (i = canvas->bloc_shadow->bx - 5; i < canvas->bloc_shadow->bx + 5; i++)
+                if (j >= 0 && i >= 0 && j<32 && i<14)
+                    canvas->dirted[j][i] = 2;
+        delete canvas->bloc_shadow;
+        canvas->bloc_shadow = NULL;
+    }
+    if (canvas->snext) {
+        delete canvas->snext;
+        canvas->snext = NULL;
+    }
+    if (canvas->snext2) {
+        delete canvas->snext2;
+        canvas->snext2 = NULL;
+    }
+    if (canvas->snext3) {
+        delete canvas->snext3;
+        canvas->snext3 = NULL;
+    }
+    //---------------------------------------------------------
 }
 
 Player_wait_respawn::Player_wait_respawn(Canvas *c, bool ab): Player_base(c), add_bonus(ab) {
