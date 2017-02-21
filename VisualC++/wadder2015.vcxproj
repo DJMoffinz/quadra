@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>wadder</ProjectName>
+    <ProjectGuid>{2C2EF3F6-3DFD-4056-AEDE-C686C30D2C4A}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140_xp</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140_xp</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>11.0.61030.0</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>Debug\</OutDir>
+    <IntDir>Debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <Linkage-zlib>static</Linkage-zlib>
+    <Linkage-libpng>static</Linkage-libpng>
+    <IncludePath>$(IncludePath);C:\Program Files %28x86%29\Microsoft DirectX SDK %28August 2007%29\Include;H:\dev\lib\SDL\2.0.5\include;H:\dev\lib\boost\1.63.0</IncludePath>
+    <LibraryPath>$(LibraryPath);C:\Program Files %28x86%29\Microsoft DirectX SDK %28August 2007%29\Lib\x86;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.14393.0\um\x86;H:\dev\lib\boost\1.63.0\stage\lib;H:\dev\lib\SDL\2.0.5\VisualC\Win32\Debug;H:\dev\lib\libpng\1.6.28\projects\vstudio\Debug</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>Release\</OutDir>
+    <IntDir>Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <Linkage-zlib>static</Linkage-zlib>
+    <Linkage-libpng>static</Linkage-libpng>
+    <IncludePath>$(IncludePath);C:\Program Files %28x86%29\Microsoft DirectX SDK %28August 2007%29\Include;H:\dev\lib\SDL\2.0.5\include;H:\dev\lib\boost\1.63.0</IncludePath>
+    <LibraryPath>$(LibraryPath);C:\Program Files %28x86%29\Microsoft DirectX SDK %28August 2007%29\Lib\x86;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.14393.0\um\x86;H:\dev\lib\boost\1.63.0\stage\lib;H:\dev\lib\SDL\2.0.5\VisualC\Win32\Release;H:\dev\lib\libpng\1.6.28\projects\vstudio\Release;H:\dev\lib\zlib\1.2.11</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4267;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <MultiProcessorCompilation>false</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>shfolder.lib;wsock32.lib;ddraw.lib;dsound.lib;dinput8.lib;winmm.lib;dxguid.lib;%(AdditionalDependencies);SDL2.lib;libpng16.lib;zlib.lib</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)wadder.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+      <IgnoreSpecificDefaultLibraries>MSVCRTD</IgnoreSpecificDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4267;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <MultiProcessorCompilation>false</MultiProcessorCompilation>
+      <MinimalRebuild>true</MinimalRebuild>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>shfolder.lib;wsock32.lib;ddraw.lib;dsound.lib;dinput8.lib;winmm.lib;dxguid.lib;%(AdditionalDependencies);SDL2.lib;libpng16.lib;zlib.lib</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+      <IgnoreSpecificDefaultLibraries>MSVCRT</IgnoreSpecificDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\source\error.cc" />
+    <ClCompile Include="..\source\res.cc" />
+    <ClCompile Include="..\source\resfile.cc" />
+    <ClCompile Include="..\source\resmanager.cc" />
+    <ClCompile Include="..\source\stringtable.cc" />
+    <ClCompile Include="..\source\wadder.cc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\source\error.h" />
+    <ClInclude Include="..\source\res.h" />
+    <ClInclude Include="..\source\resfile.h" />
+    <ClInclude Include="..\source\resmanager.h" />
+    <ClInclude Include="..\source\stringtable.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+    <Import Project="packages\zlib.redist.1.2.8.6\build\native\zlib.redist.targets" Condition="Exists('packages\zlib.redist.1.2.8.6\build\native\zlib.redist.targets')" />
+    <Import Project="packages\zlib.1.2.8.6\build\native\zlib.targets" Condition="Exists('packages\zlib.1.2.8.6\build\native\zlib.targets')" />
+    <Import Project="packages\libpng.redist.1.5.10.11\build\native\libpng.redist.targets" Condition="Exists('packages\libpng.redist.1.5.10.11\build\native\libpng.redist.targets')" />
+    <Import Project="packages\libpng.1.5.10.11\build\native\libpng.targets" Condition="Exists('packages\libpng.1.5.10.11\build\native\libpng.targets')" />
+  </ImportGroup>
+</Project>

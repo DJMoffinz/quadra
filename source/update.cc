@@ -30,9 +30,9 @@
 #define strncasecmp _strnicmp
 #endif
 
-#define UPDATE_HOST "quadra.googlecode.com"
+#define UPDATE_HOST "Host: quadra.googlecode.com\r\n"
 #define UPDATE_PORT 80
-#define UPDATE_PATH "/svn/version.txt"
+#define UPDATE_PATH "GET /svn/version.txt HTTP/1.0\r\n"
 #define UPDATE_VERSION_KEY "stable"
 
 class AutoUpdaterImpl: public AutoUpdater {
@@ -85,8 +85,8 @@ void AutoUpdaterImpl::init() {
   }
 
   buf.resize(0);
-  buf.append("GET "UPDATE_PATH" HTTP/1.0\r\n");
-  buf.append("Host: "UPDATE_HOST"\r\n");
+  buf.append(UPDATE_PATH);
+  buf.append(UPDATE_HOST);
   buf.append("Connection: close\r\n");
   snprintf(st, sizeof(st), "User-Agent: Quadra/%s\r\n", VERSION_STRING);
   buf.append(st);

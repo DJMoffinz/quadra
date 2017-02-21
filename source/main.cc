@@ -48,7 +48,7 @@ char cmd_line[1024];
 void delete_obj();
 
 char exe_directory[1024];
-
+#undef main
 extern "C" int main(int ARGC, char **ARGV) {
   SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO);
   atexit(delete_obj);
@@ -68,10 +68,14 @@ extern "C" int main(int ARGC, char **ARGV) {
 #endif
 
 	//Copy the whole thing
-	strncpy(exe_directory, ARGV[0], sizeof(exe_directory));
+    strncpy(exe_directory, ARGV[0], sizeof(exe_directory));
 	exe_directory[sizeof(exe_directory)-1]=0;
 	//Remove file name and final last /
-	char *temp=strrchr(exe_directory, '/');
+#ifdef WIN32
+    char *temp = strrchr(exe_directory, '\\');
+#else
+    char *temp = strrchr(exe_directory, '/');
+#endif
 	if(temp)
 		*temp=0;
 

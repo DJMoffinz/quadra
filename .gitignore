@@ -26,3 +26,15 @@
 /source/stamp-h1
 /test_version
 /wadder
+*.obj
+*.suo
+*.tlog
+*.dll
+*.pdb
+*.exe
+*.log
+*.res
+*.db
+*.opendb
+*.user
+*.idb

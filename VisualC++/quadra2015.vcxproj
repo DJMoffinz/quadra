@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>quadra</ProjectName>
+    <ProjectGuid>{B36B1CBB-96D2-4D95-8788-665D8EEE85A9}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140_xp</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140_xp</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>11.0.61030.0</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>..\</OutDir>
+    <IntDir>DebugQ\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <Linkage-zlib>static</Linkage-zlib>
+    <Linkage-libpng>static</Linkage-libpng>
+    <TargetName>quadra_debug</TargetName>
+    <IncludePath>H:\dev\lib\SDL\2.0.5\include;H:\dev\lib\boost\1.63.0;H:\dev\lib\zlib\1.2.11;H:\dev\lib\libpng\1.6.28;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files (x86)\Windows Kits\10\Lib\10.0.14393.0\um\x86;H:\dev\lib\boost\1.63.0\stage\lib;H:\dev\lib\SDL\2.0.5\VisualC\Win32\Debug;H:\dev\lib\libpng\1.6.28\projects\vstudio\Debug;H:\dev\lib\zlib\1.2.11;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>..\</OutDir>
+    <IntDir>ReleaseQ\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <Linkage-zlib>static</Linkage-zlib>
+    <Linkage-libpng>static</Linkage-libpng>
+    <TargetName>quadra</TargetName>
+    <IncludePath>H:\dev\lib\SDL\2.0.5\include;H:\dev\lib\boost\1.63.0;H:\dev\lib\zlib\1.2.11;H:\dev\lib\libpng\1.6.28;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files (x86)\Windows Kits\10\Lib\10.0.14393.0\um\x86;H:\dev\lib\boost\1.63.0\stage\lib;H:\dev\lib\SDL\2.0.5\VisualC\Win32\Release;H:\dev\lib\libpng\1.6.28\projects\vstudio\Release;H:\dev\lib\zlib\1.2.11;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4267;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <MultiProcessorCompilation>false</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>shfolder.lib;wsock32.lib;ddraw.lib;dsound.lib;dinput8.lib;winmm.lib;dxguid.lib;%(AdditionalDependencies);SDL2.lib;libpng16.lib;zlib.lib</AdditionalDependencies>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+      <IgnoreSpecificDefaultLibraries>MSVCRTD</IgnoreSpecificDefaultLibraries>
+    </Link>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4267;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <MultiProcessorCompilation>false</MultiProcessorCompilation>
+      <MinimalRebuild>true</MinimalRebuild>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>shfolder.lib;wsock32.lib;ddraw.lib;dsound.lib;dinput8.lib;winmm.lib;dxguid.lib;%(AdditionalDependencies);SDL2.lib;libpng16.lib;zlib.lib</AdditionalDependencies>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+      <IgnoreSpecificDefaultLibraries>MSVCRT</IgnoreSpecificDefaultLibraries>
+    </Link>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>..\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\source\bitmap.cc" />
+    <ClCompile Include="..\source\bloc.cc" />
+    <ClCompile Include="..\source\buf.cc" />
+    <ClCompile Include="..\source\canvas.cc" />
+    <ClCompile Include="..\source\cfgfile.cc" />
+    <ClCompile Include="..\source\chat_text.cc" />
+    <ClCompile Include="..\source\clipable.cc" />
+    <ClCompile Include="..\source\clock.cc" />
+    <ClCompile Include="..\source\color.cc" />
+    <ClCompile Include="..\source\command.cc" />
+    <ClCompile Include="..\source\crypt.cc" />
+    <ClCompile Include="..\source\cursor.cc" />
+    <ClCompile Include="..\source\dict.cc" />
+    <ClCompile Include="..\source\error.cc" />
+    <ClCompile Include="..\source\fonts.cc" />
+    <ClCompile Include="..\source\game.cc" />
+    <ClCompile Include="..\source\game_menu.cc" />
+    <ClCompile Include="..\source\global.cc" />
+    <ClCompile Include="..\source\highscores.cc" />
+    <ClCompile Include="..\source\http_post.cc" />
+    <ClCompile Include="..\source\http_request.cc" />
+    <ClCompile Include="..\source\id.cc" />
+    <ClCompile Include="..\source\image_png.cc" />
+    <ClCompile Include="..\source\input.cc" />
+    <ClCompile Include="..\source\inter.cc" />
+    <ClCompile Include="..\source\listbox.cc" />
+    <ClCompile Include="..\source\main.cc" />
+    <ClCompile Include="..\source\menu.cc" />
+    <ClCompile Include="..\source\menu_base.cc" />
+    <ClCompile Include="..\source\menu_demo_central.cc" />
+    <ClCompile Include="..\source\misc.cc" />
+    <ClCompile Include="..\source\multi_player.cc" />
+    <ClCompile Include="..\source\net.cc" />
+    <ClCompile Include="..\source\net_list.cc" />
+    <ClCompile Include="..\source\net_server.cc" />
+    <ClCompile Include="..\source\net_stuff.cc" />
+    <ClCompile Include="..\source\nglog.cc" />
+    <ClCompile Include="..\source\notify.cc" />
+    <ClCompile Include="..\source\overmind.cc" />
+    <ClCompile Include="..\source\packet.cc" />
+    <ClCompile Include="..\source\packets.cc" />
+    <ClCompile Include="..\source\palette.cc" />
+    <ClCompile Include="..\source\pane.cc" />
+    <ClCompile Include="..\source\player.cc" />
+    <ClCompile Include="..\source\qserv.cc" />
+    <ClCompile Include="..\source\quadra.cc" />
+    <ClCompile Include="..\source\random.cc" />
+    <ClCompile Include="..\source\recording.cc" />
+    <ClCompile Include="..\source\res.cc" />
+    <ClCompile Include="..\source\res_compress.cc" />
+    <ClCompile Include="..\source\resfile.cc" />
+    <ClCompile Include="..\source\resmanager.cc" />
+    <ClCompile Include="..\source\res_name.cc" />
+    <ClCompile Include="..\source\score.cc" />
+    <ClCompile Include="..\source\sons.cc" />
+    <ClCompile Include="..\source\sound.cc" />
+    <ClCompile Include="..\source\sprite.cc" />
+    <ClCompile Include="..\source\stats.cc" />
+    <ClCompile Include="..\source\stringtable.cc" />
+    <ClCompile Include="..\source\unicode.cc" />
+    <ClCompile Include="..\source\update.cc" />
+    <ClCompile Include="..\source\url.cc" />
+    <ClCompile Include="..\source\video.cc" />
+    <ClCompile Include="..\source\video_dumb.cc" />
+    <ClCompile Include="..\source\zone.cc" />
+    <ClCompile Include="..\source\zone_list.cc" />
+    <ClCompile Include="..\source\zone_text_clock.cc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\source\attack.h" />
+    <ClInclude Include="..\source\bitmap.h" />
+    <ClInclude Include="..\source\bloc.h" />
+    <ClInclude Include="..\source\buf.h" />
+    <ClInclude Include="..\source\canvas.h" />
+    <ClInclude Include="..\source\cfgfile.h" />
+    <ClInclude Include="..\source\chat_text.h" />
+    <ClInclude Include="..\source\clipable.h" />
+    <ClInclude Include="..\source\clock.h" />
+    <ClInclude Include="..\source\color.h" />
+    <ClInclude Include="..\source\command.h" />
+    <ClInclude Include="..\source\crypt.h" />
+    <ClInclude Include="..\source\cursor.h" />
+    <ClInclude Include="..\source\dict.h" />
+    <ClInclude Include="..\source\error.h" />
+    <ClInclude Include="..\source\fonts.h" />
+    <ClInclude Include="..\source\game.h" />
+    <ClInclude Include="..\source\game_menu.h" />
+    <ClInclude Include="..\source\global.h" />
+    <ClInclude Include="..\source\highscores.h" />
+    <ClInclude Include="..\source\http_post.h" />
+    <ClInclude Include="..\source\http_request.h" />
+    <ClInclude Include="..\source\id.h" />
+    <ClInclude Include="..\source\image.h" />
+    <ClInclude Include="..\source\image_png.h" />
+    <ClInclude Include="..\source\input.h" />
+    <ClInclude Include="..\source\inter.h" />
+    <ClInclude Include="..\source\listbox.h" />
+    <ClInclude Include="..\source\main.h" />
+    <ClInclude Include="..\source\menu.h" />
+    <ClInclude Include="..\source\menu_base.h" />
+    <ClInclude Include="..\source\menu_demo_central.h" />
+    <ClInclude Include="..\source\misc.h" />
+    <ClInclude Include="..\source\multi_player.h" />
+    <ClInclude Include="..\source\net.h" />
+    <ClInclude Include="..\source\net_buf.h" />
+    <ClInclude Include="..\source\net_call.h" />
+    <ClInclude Include="..\source\net_list.h" />
+    <ClInclude Include="..\source\net_server.h" />
+    <ClInclude Include="..\source\net_stuff.h" />
+    <ClInclude Include="..\source\nglog.h" />
+    <ClInclude Include="..\source\notify.h" />
+    <ClInclude Include="..\source\overmind.h" />
+    <ClInclude Include="..\source\packet.h" />
+    <ClInclude Include="..\source\packets.h" />
+    <ClInclude Include="..\source\palette.h" />
+    <ClInclude Include="..\source\pane.h" />
+    <ClInclude Include="..\source\player.h" />
+    <ClInclude Include="..\source\qserv.h" />
+    <ClInclude Include="..\source\quadra.h" />
+    <ClInclude Include="..\source\random.h" />
+    <ClInclude Include="..\source\recording.h" />
+    <ClInclude Include="..\source\res.h" />
+    <ClInclude Include="..\source\res_compress.h" />
+    <ClInclude Include="..\source\resfile.h" />
+    <ClInclude Include="..\source\resmanager.h" />
+    <ClInclude Include="..\source\res_name.h" />
+    <ClInclude Include="..\source\score.h" />
+    <ClInclude Include="..\source\sons.h" />
+    <ClInclude Include="..\source\sound.h" />
+    <ClInclude Include="..\source\sprite.h" />
+    <ClInclude Include="..\source\stats.h" />
+    <ClInclude Include="..\source\stringtable.h" />
+    <ClInclude Include="..\source\texte.h" />
+    <ClInclude Include="..\source\types.h" />
+    <ClInclude Include="..\source\unicode.h" />
+    <ClInclude Include="..\source\update.h" />
+    <ClInclude Include="..\source\url.h" />
+    <ClInclude Include="..\source\version.h" />
+    <ClInclude Include="..\source\video.h" />
+    <ClInclude Include="..\source\video_dumb.h" />
+    <ClInclude Include="..\source\zone.h" />
+    <ClInclude Include="..\source\zone_list.h" />
+    <ClInclude Include="..\source\zone_text_clock.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="quadra.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  </ImportGroup>
+</Project>
