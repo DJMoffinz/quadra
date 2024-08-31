@@ -1,7 +1,7 @@
-Quadra Source Release
-=====================
+Quadra Wild
+===========
 
-This is the Quadra source release.
+This is my fork of roncli's fork of the Quadra Source Release. It exists because I fixed a little bug that wasn't letting it build on Linux, and my friend and I will be using it to try our hands at modding.
 
 Requirements
 ------------
@@ -12,17 +12,18 @@ Requirements
  - SDL 2.0 (http://www.libsdl.org/)
  - Boost::System and Boost::Filesystem libraries
 
-On Ubuntu, the following packages are needed to build:
+On Ubuntu, the packages necessary to build Quadra can be installed with the following command:
 
- - make
- - g++
- - libsdl2-dev
- - libpng12-dev
- - libboost-dev
- - libboost-filesystem-dev
+    sudo apt install make g++ libsdl2-dev libpng-dev libboost-dev libboost-filesystem-dev
+
+On Arch, you can use this command:
+
+    sudo pacman -S make g++ sdl2 libpng boost
 
 Auto-update feature
 -------------------
+
+*AFAIK, this feature is defuct these days*
 
 Some users have expressed privacy and performance concerns about the
 auto-update feature. This auto-update is implemented by fetching a small file
