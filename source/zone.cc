@@ -63,8 +63,14 @@ void Zone_small_next::draw() {
 
 void Zone_canvas_bloc::draw() {
 	canvas->blit_back();
-	canvas->blit_bloc(canvas->bloc_shadow);
-	canvas->blit_bloc(canvas->bloc);
+    //-roncli 5/9/01 Added small next pieces above block shadow
+    canvas->blit_back();
+    canvas->blit_bloc(canvas->bloc_shadow);
+    canvas->small_blit_bloc(canvas->snext);
+    canvas->small_blit_bloc(canvas->snext2);
+    canvas->small_blit_bloc(canvas->snext3);
+    //---------------------------------------------------------
+    canvas->blit_bloc(canvas->bloc);
 	if(canvas->color_flash)
 		canvas->blit_flash();
 	if(canvas->level_up)

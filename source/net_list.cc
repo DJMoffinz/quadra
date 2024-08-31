@@ -1514,7 +1514,6 @@ void Net_list::got_admin_line(const char *line, Net_connection *nc) {
 		send_msg(nc, "/list                 List client connections.");
 		send_msg(nc, "/drop                 Drop a player or connection.");
 		send_msg(nc, "/allowstart [0|1]     (Dis)allow anybody to start the game.");
-		send_msg(nc, "/allowpause [0|1]     (Dis)allow anybody to pause/unpause the game.");
 		send_msg(nc, "/pause                Pause/unpause the game.");
 		send_msg(nc, "/acceptconnects [0|1] (Dis)allow new client computers to join game.");
 		send_msg(nc, "/acceptplayers [0|1]  (Dis)allow new players to join game.");
@@ -1835,13 +1834,6 @@ void Net_list::got_admin_line(const char *line, Net_connection *nc) {
 			game->net_server->allow_start=i? true:false;
 		}
 		send_msg(nc, "Allow start: %s", game->net_server->allow_start? "on":"off");
-	}
-	if(!strcmp(cmd, "allowpause")) {
-		if(params[0] && trusted) {
-			i=atoi(params);
-			game->net_server->allow_pause=i? true:false;
-		}
-		send_msg(nc, "Allow pause: %s", game->net_server->allow_pause? "on":"off");
 	}
 	if(!strcmp(cmd, "pause")) {
 		Packet_clientpause p;

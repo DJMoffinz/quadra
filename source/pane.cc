@@ -385,16 +385,16 @@ void Pane_close::step() {
 void Pane_close::update_clock() {
 	uint32_t timer=game->net_list.gettimer();
 	if(timer < (uint32_t)game->game_end_value)
-		seconds=(game->game_end_value - timer+99)/100;
-	else
+        seconds = (game->game_end_value - timer); //-roncli 5/7/01 Added centiseconds
+    else
 		seconds=0;
 }
 
 void Pane_close::allow_clock() {
 	if(game->game_end == 2) {
 		update_clock();
-		clock = new Zone_text_clock(inter, &seconds, x+10, 10, 90, false, pi.mp->courrier);
-		clock->disable();
+		clock = new Zone_text_clock(inter, &seconds, x + 10, 10, 115, false, pi.mp->courrier); //-roncli 5/7/01 Expanded to show centiseconds
+        clock->disable();
 		show_clock();
 	}
 }

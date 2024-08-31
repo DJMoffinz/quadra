@@ -111,7 +111,7 @@ public:
 	uint16_t best_move; //MSB: depth, LSB: complexity
 	uint16_t best_clean; //same here
 	uint16_t best_recurse; //MSB: complexity, LSB: depth
-	Bloc* bloc, *next, *next2, *next3, *bloc_shadow;
+	Bloc* bloc, *next, *next2, *next3, *bloc_shadow, *snext, *snext2, *snext3; //-roncli 5/9/01 Added small next pieces above block shadow
 	uint8_t color_flash;
 	Zone_next* znext, *znext2, *znext3;
 	char msg1[64], msg2[64];

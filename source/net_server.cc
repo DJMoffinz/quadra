@@ -504,23 +504,21 @@ void Net_server::clientpause(Packet *p2) {
 	}
 
 	bool allowed=false;
-	// check all the starting conditions
+    // commandline options or trusted connections are always allowed to start/pause
+    if (!p2->from || p2->from->trusted)
+        allowed=true;
+    // check all the starting conditions
 	if(game->delay_start==500 && allow_start)
 		allowed=true;
-	// make sure there's enough players
+    // make sure there's enough players
 	if(game->server_min_players && game->server_min_players > (int)game->net_list.size(false))
 		allowed=false;
 	// make sure there's enough teams
 	if(game->server_min_teams && game->server_min_teams > (int)game->net_list.count_teams(false))
 		allowed=false;
-
-	// commandline options or trusted connections are always allowed to start/pause
-	if(!p2->from || p2->from->trusted)
-		allowed=true;
-
-	// if game is already started, all of the above doesn't apply anyway
-	if(game->delay_start==0 && allow_pause)
-		allowed=true;
+    // if game is already started, all of the above doesn't apply anyway
+    if (game->delay_start==0 && allow_pause)
+        allowed=game->single;
 
 	if(!allowed)
 		return;

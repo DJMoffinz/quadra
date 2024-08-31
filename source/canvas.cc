@@ -158,7 +158,15 @@ void Canvas::delete_bloc() {
     delete next3;
   if(bloc_shadow)
     delete bloc_shadow;
-  bloc = next = next2 = next3 = bloc_shadow = NULL;
+  //-roncli 5/9/01 Added small next pieces above block shadow
+  if (snext)
+      delete snext;
+  if (snext2)
+      delete snext2;
+  if (snext3)
+      delete snext3;
+  bloc = next = next2 = next3 = bloc_shadow = snext = snext2 = snext3 = NULL;
+  //---------------------------------------------------------
 }
 
 void Canvas::init() {
@@ -170,7 +178,7 @@ void Canvas::init() {
     sprlevel_up = new Sprite(bitmap, 0, 0);
   }
   over = new Overmind();
-  bloc = next = next2 = next3 = bloc_shadow = NULL;
+  bloc = next = next2 = next3 = bloc_shadow = snext = snext2 = snext3 = NULL; //-roncli 5/9/01 Added small next pieces above block shadow
 	reinit();
   myself = new Executor();
   myself->add(new Player_init(this));
@@ -293,15 +301,38 @@ void Canvas::clear_key_all() {
 }
 
 void Canvas::calc_shadow() {
-  if(!bloc_shadow)
-    bloc_shadow = new Bloc(bloc->quel, 8, 0, 0);
-  bloc_shadow->rot = bloc->rot;
-  bloc_shadow->bx = bloc->bx;
-  bloc_shadow->by = bloc->by;
-  while(!check_collide(bloc_shadow, bloc_shadow->bx, bloc_shadow->by+1, bloc_shadow->rot))
-    bloc_shadow->by++;
-  bloc_shadow->calc_xy();
-  //bloc_shadow->x = bloc->x;
+    //-roncli 5/9/01 Added small next pieces above block shadow
+    int i, j;
+    if (!bloc_shadow)
+        bloc_shadow = new Bloc(bloc->quel, 8, 0, 0);
+    else
+        for (j = bloc_shadow->by - 7; j < bloc_shadow->by; j++)
+            for (i = bloc_shadow->bx - 5; i < bloc_shadow->bx + 5; i++)
+                if (j >= 0 && i >= 0 && j<32 && i<14)
+                    dirted[j][i] = 2;
+    bloc_shadow->rot = bloc->rot;
+    bloc_shadow->bx = bloc->bx;
+    bloc_shadow->by = bloc->by;
+    while (!check_collide(bloc_shadow, bloc_shadow->bx, bloc_shadow->by + 1, bloc_shadow->rot))
+        bloc_shadow->by++;
+    bloc_shadow->calc_xy();
+    if (!snext)
+        snext = new Bloc(next->quel, next->col, next->bx, next->by);
+    if (!snext2)
+        snext2 = new Bloc(next2->quel, next2->col, next2->bx, next2->by);
+    if (!snext3)
+        snext3 = new Bloc(next3->quel, next3->col, next3->bx, next3->by);
+    snext->bx = bloc_shadow->bx * 3 - 5;
+    snext->by = bloc_shadow->by * 3 - 33;
+    snext->calc_xy();
+    snext2->bx = bloc_shadow->bx * 3 - 5;
+    snext2->by = bloc_shadow->by * 3 - 30;
+    snext2->calc_xy();
+    snext3->bx = bloc_shadow->bx * 3 - 5;
+    snext3->by = bloc_shadow->by * 3 - 27;
+    snext3->calc_xy();
+    //---------------------------------------------------------
+    //bloc_shadow->x = bloc->x;
 }
 
 void Canvas::init_block() {
