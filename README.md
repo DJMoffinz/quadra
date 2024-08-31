@@ -18,7 +18,7 @@ On Ubuntu, the packages necessary to build Quadra can be installed with the foll
 
 On Arch, you can use this command:
 
-    sudo pacman -S make g++ sdl2 libpng boost
+    sudo pacman -S sdl2 libpng boost
 
 Auto-update feature
 -------------------
