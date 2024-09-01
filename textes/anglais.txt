@@ -1,7 +1,7 @@
 Player
 ·2 Start
 Quadra
-Hero
+Player
 Score
 Lines
 Level
