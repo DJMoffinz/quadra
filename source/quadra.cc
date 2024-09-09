@@ -628,6 +628,7 @@ int start_game() {
 	if(!dir)
 		dir = DATAGAMESDIR;
 #endif
+	}
 	resmanager=new Resmanager();
 	snprintf(fn, sizeof(fn) - 1, "%s/quadra.res", dir);
 	resmanager->loadresfile(fn);
