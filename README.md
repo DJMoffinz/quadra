@@ -3,6 +3,8 @@ Quadra Wild
 
 This is my fork of roncli's fork of the Quadra Source Release. It exists because I fixed a little bug that wasn't letting it build on Linux, and my friend and I will be using it to try our hands at modding.
 
+I kind of accidentally merged the wild branch into master and ftm I can't be bothered reverting it lol sry (:
+
 Requirements
 ------------
 
@@ -78,8 +80,7 @@ You can run Quadra with the following command (in bash):
     ./quadra -dir .
 
 If you ran the ```make install``` command, then you have 'quadra'
-installed on your system and you can just run it (no need to
-set ```QUADRADIR```).
+installed on your system and you can just run it.
 
 Building on Windows
 -------------------
