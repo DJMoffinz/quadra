@@ -23,6 +23,7 @@
 -port <p>      		Listen on specified port (server only)
 
 Miscellaneous options:
+-dir <path>             Set the directory Quadra looks for resources in
 -debug			Enable debug mode
 -play <file>		Play a recorded demo file
 -record <file>		Record a demo file

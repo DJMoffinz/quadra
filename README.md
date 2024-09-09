@@ -73,9 +73,9 @@ There you go! There is a 'quadra' binary and a 'quadra.res' resource
 file in the top-level directory. If not, then something went
 wrong. :-)
 
-You can run this with the following command (in bash):
+You can run Quadra with the following command (in bash):
 
-    QUADRADIR=. ./quadra
+    ./quadra -dir .
 
 If you ran the ```make install``` command, then you have 'quadra'
 installed on your system and you can just run it (no need to

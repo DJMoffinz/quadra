@@ -612,10 +612,14 @@ int start_game() {
 	init_directory();
 
 	const char *dir=quadradir;
+	if(command.token("dir")) {
+		dir = command_get_param("dir <filename>");
+	} else {
 #ifdef WIN32
 	dir = exe_directory;
 #else
 	dir = getenv("QUADRADIR");
+	
 #ifdef ENABLE_APP_BUNDLE
 	// TODO(pphaneuf): We're leaking the string returned by SDL_GetBasePath.
 	if(!dir)
