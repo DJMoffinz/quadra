@@ -22,6 +22,10 @@ On Arch, you can use this command:
 
     sudo pacman -S sdl2 libpng boost
 
+I am currently expoerimenting with support for [quasi-msys2](https://github.com/HolyBlackCat/quasi-msys2) (which i'm sure will eventually include actual msys2 if that doesnt work already) and after setting up the environment you can use the following command (outside the shell) to install the necessary dependencies:
+
+    make install _SDL2 _libpng _boost
+
 Auto-update feature
 -------------------
 
