@@ -46,7 +46,9 @@ Res_dos::Res_dos(const char *fil, Res_mode mode) {
 		  flag = O_CREAT|O_TRUNC|O_RDWR;
 		  break;
 	}
-    flag |= O_BINARY;
+  #ifdef WIN32
+  flag |= O_BINARY;
+  #endif
 	handle = open(fil, flag, 0666);
 	if(handle == -1) {
 		if(mode == RES_TRY || mode == RES_CREATE)
