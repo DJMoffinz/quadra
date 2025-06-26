@@ -32,9 +32,10 @@ class SampleData;
 
 class Sound {
   SDL_AudioSpec spec;
+  SDL_AudioDeviceID device;
 	std::vector<Playing_sfx*> plays;
 	static void audio_callback(void *userdata, Uint8 *stream, int len);
-	Sound(const SDL_AudioSpec& _spec);
+	Sound(const SDL_AudioSpec& _spec, const SDL_AudioDeviceID _device);
 public:
   static Sound* New();
   SampleData* normalize(char* _sample, unsigned int _size,

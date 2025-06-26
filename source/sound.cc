@@ -110,7 +110,9 @@ Sound* Sound::New() {
   wantedspec.channels = CHANNELNUMBER;
   wantedspec.callback = Sound::audio_callback;
 
-  if(SDL_OpenAudio(&wantedspec, &spec) == -1) {
+  SDL_AudioDeviceID device = SDL_OpenAudioDevice(NULL, 0, &wantedspec, &spec, 0);
+
+  if(device <= 1) {
     SDL_Log("SDL_OpenAudio failed: %s", SDL_GetError());
     return NULL;
   }
@@ -118,32 +120,34 @@ Sound* Sound::New() {
   if(spec.freq != SAMPLINGRATE)
     SDL_Log("sound: warning, could not set sampling rate");
 
-  if(spec.format != AUDIOFORMAT)
+  if(spec.format != AUDIOFORMAT) {
     SDL_Log("sound: warning, did not get preferred audio format");
+  }
 
   if(spec.format != AUDIO_S16 && spec.format != AUDIO_U8) {
     SDL_Log("sound: unsupported audio format, disabling");
-    SDL_CloseAudio();
+    SDL_CloseAudioDevice(device);
     return NULL;
   }
+
 
   if(spec.channels != CHANNELNUMBER)
     SDL_Log("sound: warning, could not set number of channels");
 
   if(spec.channels != 1 && spec.channels != 2) {
     SDL_Log("sound: neither mono or stereo supported, disabling");
-    SDL_CloseAudio();
+    SDL_CloseAudioDevice(device);
     return NULL;
   }
 
-  return new Sound(spec);
+  return new Sound(spec, device);
 }
 
-Sound::Sound(const SDL_AudioSpec& _spec):
-  spec(_spec) {
+Sound::Sound(const SDL_AudioSpec& _spec, const SDL_AudioDeviceID _device):
+  spec(_spec), device(_device) {
   sound = this;
   // Unpausing the audio starts the callback.
-  SDL_PauseAudio(0);
+  SDL_PauseAudioDevice(this->device, 0);
   SDL_Log("sound: opened succesfully");
 }
 
@@ -231,7 +235,7 @@ void Sound::audio_callback(void *userdata, Uint8 *stream, int len) {
 }
 
 Sound::~Sound() {
-  SDL_CloseAudio();
+  SDL_CloseAudioDevice(this->device);
 }
 
 Sample::Sample(const Res& re):
@@ -258,12 +262,12 @@ void Sound::start(SampleData* _sam, int _vol, int _pan, int _freq) {
   if(!_sam)
     return;
 
-  SDL_LockAudio();
+  SDL_LockAudioDevice(this->device);
 
   if(sound->plays.size() < MAXVOICES)
     sound->plays.push_back(new Playing_sfx(_sam, _vol, _pan, _freq, spec.freq));
 
-  SDL_UnlockAudio();
+  SDL_UnlockAudioDevice(this->device);
 }
 
 SampleData* Sound::normalize(char* _sample, unsigned int _size,
