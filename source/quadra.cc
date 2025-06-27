@@ -612,22 +612,16 @@ int start_game() {
 	init_directory();
 
 	const char *dir=quadradir;
-#ifdef WIN32
-	dir = exe_directory;
-#else
-	dir = getenv("QUADRADIR");
-#ifdef ENABLE_APP_BUNDLE
-	// TODO(pphaneuf): We're leaking the string returned by SDL_GetBasePath.
-	if(!dir)
-		dir = SDL_GetBasePath();
+#ifdef DATAGAMESDIR
+  dir = DATAGAMESDIR;
 #endif
-	if(!dir)
-		dir = DATAGAMESDIR;
-#endif
+  dir = getenv("QUADRADIR");
+	if(!dir) dir = exe_directory;
+  
 	resmanager=new Resmanager();
-	snprintf(fn, sizeof(fn) - 1, "%s/quadra.res", dir);
+	snprintf(fn, sizeof(fn) - 1, "%squadra.res", dir);
 	resmanager->loadresfile(fn);
-	snprintf(fn, sizeof(fn) - 1, "%s/quadra%i%i%i.res", dir, Config::major, Config::minor, Config::patchlevel);
+	snprintf(fn, sizeof(fn) - 1, "%squadra%i%i%i.res", dir, Config::major, Config::minor, Config::patchlevel);
 	resmanager->loadresfile(fn);
 	if(command.token("patch") || command.token("theme")) {
 		const char *temp=command_get_param("patch <filename>");

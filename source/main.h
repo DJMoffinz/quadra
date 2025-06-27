@@ -38,6 +38,6 @@ enum Time_mode {
 
 extern Time_mode time_control;
 
-extern char exe_directory[];
+extern const char *exe_directory;
 
 #endif

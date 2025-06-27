@@ -47,7 +47,7 @@ char cmd_line[1024];
 
 void delete_obj();
 
-char exe_directory[1024];
+const char *exe_directory = NULL;
 #undef main
 extern "C" int main(int ARGC, char **ARGV) {
   SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO);
@@ -67,17 +67,10 @@ extern "C" int main(int ARGC, char **ARGV) {
 			skelton_msgbox("SIGPIPE handler isn't default, ignoring.\n");
 #endif
 
-	//Copy the whole thing
-    strncpy(exe_directory, ARGV[0], sizeof(exe_directory));
-	exe_directory[sizeof(exe_directory)-1]=0;
-	//Remove file name and final last /
-#ifdef WIN32
-    char *temp = strrchr(exe_directory, '\\');
-#else
-    char *temp = strrchr(exe_directory, '/');
-#endif
-	if(temp)
-		*temp=0;
+  exe_directory = SDL_GetBasePath();
+  if (!exe_directory) {
+    fatal_msgbox("Failed to get base path: %s\n", SDL_GetError()); 
+  }
 
   for(int i=1; i<ARGC; i++) {
     command.add(ARGV[i]);
@@ -120,6 +113,7 @@ void delete_obj() {
     delete cursor;
     cursor=NULL;
   }
+  SDL_free((void *)exe_directory);
   SDL_Quit();
   msgbox("ending delete_obj...\n");
 }
