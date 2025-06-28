@@ -31,13 +31,15 @@
 
 Video* video = NULL;
 
-static SDL_Renderer* CreateRenderer(SDL_Window* window) {
+static SDL_Renderer* CreateRenderer(SDL_Window* window, int w, int h) {
   SDL_Renderer* renderer(
     SDL_CreateRenderer(window, -1, SDL_RENDERER_PRESENTVSYNC));
 
   // If we couldn't get a renderer that supports vsync, get whatever we can.
   if (!renderer)
     renderer = SDL_CreateRenderer(window, -1, 0);
+
+  SDL_RenderSetLogicalSize(renderer, w, h);
 
   return renderer;
 }
@@ -48,8 +50,8 @@ public:
     : Video(new Video_bitmap_SDL(this, 0, 0, w, h), w, h, w),
       window_(SDL_CreateWindow(
         "Quadra", SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED, w, h, fullscreen ?
-            SDL_WINDOW_FULLSCREEN|SDL_WINDOW_INPUT_GRABBED : 0)),
-      renderer_(CreateRenderer(window_)),
+            SDL_WINDOW_FULLSCREEN_DESKTOP|SDL_WINDOW_INPUT_GRABBED : 0)),
+      renderer_(CreateRenderer(window_, w, h)),
       texture_(SDL_CreateTexture(
         renderer_, SDL_GetWindowPixelFormat(window_),
         SDL_TEXTUREACCESS_STREAMING, w, h)),
